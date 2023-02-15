@@ -1,15 +1,10 @@
 import "./App.css";
-import TopNav from "./components/TopNav";
-import BotNav from "./components/BotNav";
+import FeedScreen from "./screens/FeedScreen";
 
 function App() {
   return (
     <div className="App">
-      <TopNav />
-      <div style={{ height: "80vh", backgroundColor: "white" }}>
-        <span>CONTENT HERE</span>
-      </div>
-      <BotNav />
+      <FeedScreen />
     </div>
   );
 }

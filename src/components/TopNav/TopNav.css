@@ -15,7 +15,5 @@
 }
 .buttonsWrapper {
   display: flex;
-}
-.buttonWrapper {
-  flex-grow: 1;
+  justify-content: space-evenly;
 }

@@ -1,6 +1,11 @@
 .BotNav {
   display: flex;
+  flex-direction: column;
   background-color: #c41200;
   color: white;
   height: 10%;
+}
+.buttonsWrapper {
+  display: flex;
+  justify-content: space-evenly;
 }
