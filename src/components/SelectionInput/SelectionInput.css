@@ -1,0 +1,25 @@
+.question-wrapper {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+.question-label {
+  font-size: large;
+}
+.selections-wrapper {
+  margin-top: 3px;
+}
+.selection {
+  display: inline-block;
+  background-color: white;
+  color: black;
+  border-radius: 20px;
+  text-align: center;
+  padding: 8px 15px 8px 15px;
+  margin: 3px;
+  font-weight: 500;
+}
+.selected {
+  background-color: #c41200;
+  color: white;
+}
