@@ -14,12 +14,12 @@
   background-color: #f7f0f5;
   height: 50vh;
   width: 85vw;
-  padding: 10px;
+  padding: 25px;
   align-items: center;
   border-radius: 10%;
 }
 .check-in-title {
-  font-size: larger;
+  font-size: x-large;
 }
 .submit {
   color: white;

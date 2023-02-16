@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import TopNav from "../../components/TopNav";
 import BotNav from "../../components/BotNav";
 import LOCATIONS from "../../LOCATIONS";
@@ -12,8 +12,13 @@ function CheckInScreen() {
   const LINE_LABEL = "Are the lines long?";
   const LINE_OPTIONS = ["No", "Kinda", "Yes"];
 
+  const [location, setLocation] = useState(null);
+  const [seating, setSeating] = useState(null);
+  const [line, setLine] = useState(null);
+
   const handleSubmit = (e) => {
     alert("Check-In submitted");
+    console.log(location, seating, line);
     e.preventDefault();
   };
 
@@ -23,9 +28,24 @@ function CheckInScreen() {
       <div className="check-in-wrapper">
         <form className="check-in-form">
           <span className="check-in-title">CHECK-IN</span>
-          <SelectionInput label={LOCATION_LABEL} options={LOCATIONS} />
-          <SelectionInput label={SEATING_LABEL} options={SEATING_OPTIONS} />
-          <SelectionInput label={LINE_LABEL} options={LINE_OPTIONS} />
+          <SelectionInput
+            label={LOCATION_LABEL}
+            options={LOCATIONS}
+            selected={location}
+            onChange={setLocation}
+          />
+          <SelectionInput
+            label={SEATING_LABEL}
+            options={SEATING_OPTIONS}
+            selected={seating}
+            onChange={setSeating}
+          />
+          <SelectionInput
+            label={LINE_LABEL}
+            options={LINE_OPTIONS}
+            selected={line}
+            onChange={setLine}
+          />
           <div className="submit" onClick={handleSubmit}>
             <span>Submit</span>
           </div>

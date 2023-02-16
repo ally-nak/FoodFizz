@@ -5,10 +5,16 @@ function SelectionInput(props) {
   return (
     <React.Fragment>
       <div className="question-wrapper">
-        <span>{props.label}</span>
+        <span className="question-label">{props.label}</span>
         <div className="selections-wrapper">
           {props.options.map((option) => (
-            <div key={option} className="selection">
+            <div
+              key={option}
+              className={
+                option === props.selected ? "selection selected" : "selection"
+              }
+              onClick={() => props.onChange(option)}
+            >
               <span>{option}</span>
             </div>
           ))}
