@@ -7,7 +7,7 @@ function FeedScreen() {
     <React.Fragment>
       <TopNav />
       <div style={{ height: "80vh", backgroundColor: "white" }}>
-        <span>POST CONTENT HERE</span>
+        <span>FEED CONTENT HERE</span>
       </div>
       <BotNav />
     </React.Fragment>

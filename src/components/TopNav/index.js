@@ -1,5 +1,8 @@
 import "./TopNav.css";
 import { NavLink } from "react-router-dom";
+import TopIcon from "./top.svg";
+import NewIcon from "./new.svg";
+import RankedIcon from "./ranked.svg";
 
 function TopNav() {
   return (
@@ -9,15 +12,18 @@ function TopNav() {
         <span>MENU</span>
       </div>
       <div className="buttonsWrapper">
-        <div className="buttonWrapper">
+        <NavLink className="buttonWrapper" to="/top">
+          <img src={TopIcon} alt="Top Icon" />
           <span className="buttonText">Top</span>
-        </div>
-        <div className="buttonWrapper">
+        </NavLink>
+        <NavLink className="buttonWrapper" to="/new">
+          <img src={NewIcon} alt="New Icon" />
           <span className="buttonText">New</span>
-        </div>
-        <div className="buttonWrapper">
+        </NavLink>
+        <NavLink className="buttonWrapper" to="/ranked">
+          <img src={RankedIcon} alt="Ranked Icon" />
           <span className="buttonText">Ranked</span>
-        </div>
+        </NavLink>
       </div>
     </div>
   );
