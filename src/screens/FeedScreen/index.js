@@ -1,6 +1,6 @@
 import React from "react";
-import TopNav from "../components/TopNav";
-import BotNav from "../components/BotNav";
+import TopNav from "../../components/TopNav";
+import BotNav from "../../components/BotNav";
 
 function FeedScreen() {
   return (

@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import FeedScreen from "./screens/feed";
-import PostScreen from "./screens/post";
+import FeedScreen from "./screens/FeedScreen";
+import NewPostScreen from "./screens/NewPostScreen";
 import CheckInScreen from "./screens/CheckInScreen";
 
 export default function App() {
@@ -9,7 +9,7 @@ export default function App() {
     <BrowserRouter className="App">
       <Routes>
         <Route index element={<FeedScreen />} />
-        <Route path="post" element={<PostScreen />} />
+        <Route path="post" element={<NewPostScreen />} />
         <Route path="check-in" element={<CheckInScreen />} />
       </Routes>
     </BrowserRouter>

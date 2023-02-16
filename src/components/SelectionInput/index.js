@@ -2,6 +2,13 @@ import "./SelectionInput.css";
 import React from "react";
 
 function SelectionInput(props) {
+  function checkSelection(option) {
+    if (props.multiselect) {
+      return props.selected.some((e) => e === option);
+    } else {
+      return option === props.selected;
+    }
+  }
   return (
     <React.Fragment>
       <div className="question-wrapper">
@@ -11,7 +18,7 @@ function SelectionInput(props) {
             <div
               key={option}
               className={
-                option === props.selected ? "selection selected" : "selection"
+                checkSelection(option) ? "selection selected" : "selection"
               }
               onClick={() => props.onChange(option)}
             >
