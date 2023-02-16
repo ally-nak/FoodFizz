@@ -1,17 +1,17 @@
 import React from "react";
-import TopNav from "../components/TopNav";
-import BotNav from "../components/BotNav";
+import TopNav from "../../components/TopNav";
+import BotNav from "../../components/BotNav";
 
-function PostScreen() {
+function FeedScreen() {
   return (
     <React.Fragment>
       <TopNav />
       <div style={{ height: "80vh", backgroundColor: "white" }}>
-        <span>MAKE POST HERE</span>
+        <span>FEED CONTENT HERE</span>
       </div>
       <BotNav />
     </React.Fragment>
   );
 }
 
-export default PostScreen;
+export default FeedScreen;
