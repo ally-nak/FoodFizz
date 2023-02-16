@@ -26,7 +26,7 @@ function CheckInScreen() {
     <React.Fragment>
       <TopNav />
       <div className="check-in-wrapper">
-        <form className="check-in-form">
+        <div className="check-in-form">
           <span className="check-in-title">CHECK-IN</span>
           <SelectionInput
             label={LOCATION_LABEL}
@@ -49,7 +49,7 @@ function CheckInScreen() {
           <div className="submit" onClick={handleSubmit}>
             <span>Submit</span>
           </div>
-        </form>
+        </div>
       </div>
       <BotNav />
     </React.Fragment>
