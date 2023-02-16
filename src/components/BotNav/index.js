@@ -11,6 +11,9 @@ function BotNav() {
         <NavLink to="/post">
           <span className="buttonText">Post</span>
         </NavLink>
+        <NavLink to="/check-in">
+          <span className="buttonText">Check-In</span>
+        </NavLink>
         <div className="buttonWrapper">
           <span className="buttonText">Search</span>
         </div>

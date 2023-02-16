@@ -1,0 +1,29 @@
+.check-in-wrapper {
+  display: grid;
+  height: 80vh;
+  background-color: white;
+  color: #c41200;
+  font-weight: bold;
+}
+.check-in-form {
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f7f0f5;
+  height: 50vh;
+  width: 85vw;
+  padding: 10px;
+  align-items: center;
+  border-radius: 10%;
+}
+.check-in-title {
+  font-size: larger;
+}
+.submit {
+  color: white;
+  background-color: #c41200;
+  border-radius: 30px;
+  padding: 10px 25px 10px 25px;
+}
