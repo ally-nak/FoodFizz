@@ -1,0 +1,19 @@
+.TopNav {
+  display: flex;
+  flex-direction: column;
+  background-color: #c41200;
+  color: white;
+  height: 10%;
+}
+.logoWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.logo {
+  font-size: larger;
+  font-weight: bold;
+}
+.buttonsWrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
