@@ -1,12 +1,17 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import FeedScreen from "./screens/FeedScreen";
+import FeedScreen from "./screens/feed";
+import PostScreen from "./screens/post";
+import CheckInScreen from "./screens/checkIn";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <FeedScreen />
-    </div>
+    <BrowserRouter className="App">
+      <Routes>
+        <Route index element={<FeedScreen />} />
+        <Route path="post" element={<PostScreen />} />
+        <Route path="check-in" element={<CheckInScreen />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;

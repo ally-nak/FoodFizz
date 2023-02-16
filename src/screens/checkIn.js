@@ -1,17 +1,17 @@
 import React from "react";
-import TopNav from "../../components/TopNav";
-import BotNav from "../../components/BotNav";
+import TopNav from "../components/TopNav";
+import BotNav from "../components/BotNav";
 
-function FeedScreen() {
+function CheckInScreen() {
   return (
     <React.Fragment>
       <TopNav />
       <div style={{ height: "80vh", backgroundColor: "white" }}>
-        <span>CONTENT HERE</span>
+        <span>CHECK IN</span>
       </div>
       <BotNav />
     </React.Fragment>
   );
 }
 
-export default FeedScreen;
+export default CheckInScreen;

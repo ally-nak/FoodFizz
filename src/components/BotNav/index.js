@@ -1,17 +1,18 @@
 import "./BotNav.css";
+import { NavLink } from "react-router-dom";
 
 function BotNav() {
   return (
     <div className="BotNav">
       <div className="buttonsWrapper">
-        <div className="buttonWrapper">
+        <NavLink to="/">
           <span className="buttonText">Home</span>
-        </div>
+        </NavLink>
+        <NavLink to="/post">
+          <span className="buttonText">Post</span>
+        </NavLink>
         <div className="buttonWrapper">
           <span className="buttonText">Search</span>
-        </div>
-        <div className="buttonWrapper">
-          <span className="buttonText">Post</span>
         </div>
       </div>
     </div>
