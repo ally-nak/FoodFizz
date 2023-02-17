@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import TopNav from "../../components/TopNav";
-import BotNav from "../../components/BotNav";
 import SelectionInput from "../../components/SelectionInput";
 import LOCATIONS from "../../LOCATIONS";
 import "./newPost.css";
+import PhotoArrow from "./photo_arrow.svg";
 import RedTree from "./red_tree.svg";
 import WhiteTree from "./white_tree.svg";
+import { NavLink } from "react-router-dom";
 
 function NewPostScreen() {
+  const PHOTO_LABEL = "UPLOAD A PHOTO";
   const LOCATION_LABEL = "Select a dining hall:";
   const RELATED_LABEL = "Select all related fields:";
   const RELATED_OPTIONS = [
@@ -20,12 +22,13 @@ function NewPostScreen() {
   const RATING_LABEL = "Give it a rating:";
   const REVIEW_PLACEHOLDER = "Is the food good? Write about it...";
 
+  const [photo, setPhoto] = useState(null);
   const [text, setText] = useState("");
   const [location, setLocation] = useState(null);
   const [related, setRelated] = useState([]);
   const [rating, setRating] = useState(null);
 
-  function handleRelated(option) {
+  const handleRelated = (option) => {
     const newRelated = [...related];
     const i = newRelated.indexOf(option);
     if (i === -1) {
@@ -34,24 +37,55 @@ function NewPostScreen() {
       newRelated.splice(i, 1);
     }
     setRelated(newRelated);
-  }
+  };
 
-  function determineTree(i) {
+  const determineTree = (i) => {
     if (!rating) return false;
     if (i <= rating) return true;
     return false;
-  }
+  };
+
+  const hiddenFileInput = React.useRef(null);
+  const handleUploadClick = (e) => {
+    hiddenFileInput.current.click();
+  };
+
+  const handleUpload = (e) => {
+    const uploadedPhoto = e.target.files[0];
+    setPhoto(uploadedPhoto);
+  };
+
+  const handleSubmit = () => {
+    alert("Submitting post");
+    console.log({ photo, text, location, related, rating });
+  };
 
   return (
     <React.Fragment>
       <TopNav />
       <div className="new-post-wrapper">
         <div className="button-wrapper">
-          <span className="cancel-button">Cancel</span>
-          <span className="post-button">Post!</span>
+          <NavLink to="/">
+            <span className="cancel-button">Cancel</span>
+          </NavLink>
+          <span className="post-button" onClick={handleSubmit}>
+            Post!
+          </span>
         </div>
-        <div className="photo-wrapper">
-          <span>UPLOAD A PHOTO</span>
+        {/* TODO: Figure out how to display uploaded photo */}
+        {/* {photo && <img src={photo} alt={"User uploaded"} />} */}
+        <div className="photo-wrapper" onClick={handleUploadClick}>
+          <img height="35px" src={PhotoArrow} alt="Arrow Icon" />
+          <span>{PHOTO_LABEL}</span>
+          <input
+            type="file"
+            ref={hiddenFileInput}
+            style={{ display: "none" }}
+            id="photo"
+            name="photo"
+            accept="image/png, image/jpeg"
+            onChange={handleUpload}
+          />
         </div>
         <input
           className="post-text"
@@ -89,7 +123,6 @@ function NewPostScreen() {
           </div>
         </div>
       </div>
-      <BotNav />
     </React.Fragment>
   );
 }
