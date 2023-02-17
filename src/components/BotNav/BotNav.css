@@ -1,9 +1,11 @@
 .BotNav {
   display: flex;
+  position: absolute;
   flex-direction: column;
   background-color: #c41200;
   color: white;
   height: 10%;
+  width: 100%;
 }
 .buttonsWrapper {
   display: flex;

@@ -1,0 +1,40 @@
+.post-wrapper {
+    display: grid;
+    background-color: white;
+    color: #c41200;
+    font-weight: bold;
+    border-bottom: 0.05rem solid lightgray;
+  }
+
+.post-header{
+    display: flex;
+    padding: 10px 3px;
+    justify-content: space-between;
+}
+
+.post-title{
+    font-size: large;
+    margin-bottom: 1%;
+}
+
+.post-time{
+    font-size: smaller;
+    color: gray;
+}
+
+.post-caption{
+    font-size: small;
+    font-weight: 600;
+    color: black;
+    margin-left: 2%;
+}
+
+.post-image{
+   width: 100%;
+}
+
+.post-footer{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
