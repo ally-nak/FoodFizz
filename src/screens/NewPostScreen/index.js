@@ -68,14 +68,14 @@ function NewPostScreen() {
           <NavLink to="/">
             <span className="cancel-button">Cancel</span>
           </NavLink>
-          <span className="post-button" onClick={handleSubmit}>
-            Post!
-          </span>
+          <NavLink onClick={handleSubmit} to="/">
+            <span className="post-button">Post!</span>
+          </NavLink>
         </div>
         {/* TODO: Figure out how to display uploaded photo */}
         {/* {photo && <img src={photo} alt={"User uploaded"} />} */}
         <div className="photo-wrapper" onClick={handleUploadClick}>
-          <img height="35px" src={PhotoArrow} alt="Arrow Icon" />
+          <img className="photo-arrow" src={PhotoArrow} alt="Arrow Icon" />
           <span>{PHOTO_LABEL}</span>
           <input
             type="file"
@@ -87,9 +87,8 @@ function NewPostScreen() {
             onChange={handleUpload}
           />
         </div>
-        <input
+        <textarea
           className="post-text"
-          type="text"
           placeholder={REVIEW_PLACEHOLDER}
           value={text}
           onChange={(e) => setText(e.target.value)}
@@ -108,8 +107,8 @@ function NewPostScreen() {
           onChange={handleRelated}
         />
         <div className="rating-wrapper">
-          <span>{RATING_LABEL}</span>
-          <div>
+          <span className="rating-label">{RATING_LABEL}</span>
+          <div className="trees-wrapper">
             {[...Array(5)].map((e, i) => {
               return (
                 <img
