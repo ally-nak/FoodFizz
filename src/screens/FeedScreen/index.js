@@ -1,14 +1,14 @@
 import React from "react";
 import TopNav from "../../components/TopNav";
 import BotNav from "../../components/BotNav";
+import Post from "../../components/Post";
 
 function FeedScreen() {
   return (
     <React.Fragment>
       <TopNav />
-      <div style={{ height: "80vh", backgroundColor: "white" }}>
-        <span>FEED CONTENT HERE</span>
-      </div>
+        <Post />
+        <Post />
       <BotNav />
     </React.Fragment>
   );
