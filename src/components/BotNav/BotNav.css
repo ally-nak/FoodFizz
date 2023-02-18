@@ -5,8 +5,8 @@
   flex-direction: column;
   background-color: #c41200;
   color: white;
-  height: 10%;
   width: 100%;
+  height: 10vh;
 }
 .buttonsWrapper {
   display: flex;

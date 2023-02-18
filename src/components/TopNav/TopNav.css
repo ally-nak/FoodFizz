@@ -3,7 +3,7 @@
   flex-direction: column;
   background-color: #c41200;
   color: white;
-  height: 10%;
+  height: 10vh;
 }
 .logoWrapper {
   display: flex;
