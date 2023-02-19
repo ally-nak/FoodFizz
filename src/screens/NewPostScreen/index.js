@@ -7,6 +7,10 @@ import PhotoArrow from "./photo_arrow.svg";
 import RedTree from "./red_tree.svg";
 import WhiteTree from "./white_tree.svg";
 import { NavLink } from "react-router-dom";
+import { firestore } from "../../firebase";
+import { addDoc, collection } from "firebase/firestore"; 
+import { ref, uploadBytes } from "firebase/storage";
+import { storage } from "../../firebase";
 
 function NewPostScreen() {
   const PHOTO_LABEL = "UPLOAD A PHOTO";
@@ -55,9 +59,21 @@ function NewPostScreen() {
     setPhoto(uploadedPhoto);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     alert("Submitting post");
+    await addDoc(collection(firestore, "feed"), {
+      photo: (photo ? true : false),
+      caption: text,
+      location: location,
+      allergy: related,
+      likes: 0,
+      rating: rating,
+    })
     console.log({ photo, text, location, related, rating });
+    if (photo) {
+      var photoRef = ref(storage, photo.name);
+      uploadBytes(photoRef, photo)
+    }
   };
 
   return (
