@@ -1,9 +1,9 @@
 .check-in-wrapper {
   display: grid;
-  height: 80vh;
   background-color: white;
   color: #c41200;
   font-weight: bold;
+  height: 100%;
 }
 .check-in-form {
   align-self: center;

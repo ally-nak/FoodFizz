@@ -14,6 +14,8 @@ code {
 
 .wrapper {
   background-color: gray;
+  display: flex;
+  flex-direction: column;
   /* iPhone 13 ratio 19.5:9 */
   height: 100vh;
   width: 100vw;

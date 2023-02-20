@@ -13,8 +13,8 @@ function TopNav() {
       </div>
       <div className="buttonsWrapper">
         <NavLink className="buttonWrapper" to="/top">
-          <img src={TopIcon} alt="Top Icon" />
-          <span className="buttonText">Top</span>
+            <img src={TopIcon} alt="Top Icon" />
+            <span className="buttonText">Top</span>
         </NavLink>
         <NavLink className="buttonWrapper" to="/new">
           <img src={NewIcon} alt="New Icon" />
