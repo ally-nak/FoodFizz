@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import TopNav from "../../components/TopNav";
 import BotNav from "../../components/BotNav";
 import Post from "../../components/Post";
+import "./feed.css";
 
 import { firestore } from "../../firebase";
 import { getDocs, collection } from "firebase/firestore"
@@ -29,10 +30,14 @@ function FeedScreen() {
 
   return (
     <React.Fragment>
+      
       <TopNav />
+      <div className="container">
         <Post />
         <Post />
+      </div>
       <BotNav />
+      
     </React.Fragment>
   );
 }
