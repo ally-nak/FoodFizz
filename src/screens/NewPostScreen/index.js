@@ -8,8 +8,8 @@ import RedTree from "./red_tree.svg";
 import WhiteTree from "./white_tree.svg";
 import { NavLink } from "react-router-dom";
 import { firestore } from "../../firebase";
-import { addDoc, collection } from "firebase/firestore"; 
-import { ref, uploadBytes } from "firebase/storage";
+import { addDoc, collection, doc, setDoc } from "firebase/firestore"; 
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "../../firebase";
 
 function NewPostScreen() {
@@ -59,20 +59,38 @@ function NewPostScreen() {
     setPhoto(uploadedPhoto);
   };
 
+  async function getImageURL(docRef) {
+    var photoPath = "images/" + docRef.id  + "/" + photo.name
+    var photoRef = ref(storage, photoPath);
+    uploadBytes(photoRef, photo).then(async (snapshot) => {
+      getDownloadURL(snapshot.ref).then(async (url) => {
+        await setDoc(docRef, {
+          photo: url,
+          caption: text,
+          location: location,
+          allergy: related,
+          likes: 0,
+          rating: rating,
+        })
+      })
+      
+    })
+  }
+
   const handleSubmit = async () => {
     alert("Submitting post");
-    await addDoc(collection(firestore, "feed"), {
-      photo: (photo ? true : false),
-      caption: text,
-      location: location,
-      allergy: related,
-      likes: 0,
-      rating: rating,
-    })
-    console.log({ photo, text, location, related, rating });
+    var docRef = doc(collection(firestore, "feed"));
     if (photo) {
-      var photoRef = ref(storage, photo.name);
-      uploadBytes(photoRef, photo)
+      getImageURL(docRef)
+    } else {
+      await setDoc(docRef, {
+        photo: "",
+        caption: text,
+        location: location,
+        allergy: related,
+        likes: 0,
+        rating: rating,
+      })
     }
   };
 
