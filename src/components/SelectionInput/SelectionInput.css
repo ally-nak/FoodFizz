@@ -20,6 +20,6 @@
   font-weight: 500;
 }
 .selected {
-  background-color: #c41200;
-  color: white;
+  background-color: #c41200 !important;
+  color: white !important;
 }
