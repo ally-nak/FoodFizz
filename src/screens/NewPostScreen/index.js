@@ -8,7 +8,7 @@ import RedTree from "./red_tree.svg";
 import WhiteTree from "./white_tree.svg";
 import { NavLink } from "react-router-dom";
 import { firestore } from "../../firebase";
-import { addDoc, collection, doc, setDoc } from "firebase/firestore"; 
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "../../firebase";
 
@@ -60,7 +60,7 @@ function NewPostScreen() {
   };
 
   async function getImageURL(docRef) {
-    var photoPath = "images/" + docRef.id  + "/" + photo.name
+    var photoPath = "images/" + docRef.id + "/" + photo.name;
     var photoRef = ref(storage, photoPath);
     uploadBytes(photoRef, photo).then(async (snapshot) => {
       getDownloadURL(snapshot.ref).then(async (url) => {
@@ -71,17 +71,16 @@ function NewPostScreen() {
           allergy: related,
           likes: 0,
           rating: rating,
-        })
-      })
-      
-    })
+        });
+      });
+    });
   }
 
   const handleSubmit = async () => {
     alert("Submitting post");
     var docRef = doc(collection(firestore, "feed"));
     if (photo) {
-      getImageURL(docRef)
+      getImageURL(docRef);
     } else {
       await setDoc(docRef, {
         photo: "",
@@ -90,7 +89,7 @@ function NewPostScreen() {
         allergy: related,
         likes: 0,
         rating: rating,
-      })
+      });
     }
   };
 
@@ -106,21 +105,31 @@ function NewPostScreen() {
             <span className="post-button">Post!</span>
           </NavLink>
         </div>
-        {/* TODO: Figure out how to display uploaded photo */}
-        {/* {photo && <img src={photo} alt={"User uploaded"} />} */}
-        <div className="photo-wrapper" onClick={handleUploadClick}>
-          <img className="photo-arrow" src={PhotoArrow} alt="Arrow Icon" />
-          <span>{PHOTO_LABEL}</span>
-          <input
-            type="file"
-            ref={hiddenFileInput}
-            style={{ display: "none" }}
-            id="photo"
-            name="photo"
-            accept="image/png, image/jpeg"
-            onChange={handleUpload}
-          />
-        </div>
+        {photo && (
+          <div className="preview-photo-wrapper">
+            <img
+              className="preview-photo"
+              src={URL.createObjectURL(photo)}
+              alt={"User uploaded"}
+              onClick={handleUploadClick}
+            />
+          </div>
+        )}
+        {!photo && (
+          <div className="photo-wrapper" onClick={handleUploadClick}>
+            <img className="photo-arrow" src={PhotoArrow} alt="Arrow Icon" />
+            <span>{PHOTO_LABEL}</span>
+          </div>
+        )}
+        <input
+          type="file"
+          ref={hiddenFileInput}
+          style={{ display: "none" }}
+          id="photo"
+          name="photo"
+          accept="image/png, image/jpeg"
+          onChange={handleUpload}
+        />
         <textarea
           className="post-text"
           placeholder={REVIEW_PLACEHOLDER}
