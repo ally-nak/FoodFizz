@@ -4,6 +4,8 @@ import BotNav from "../../components/BotNav";
 import LOCATIONS from "../../LOCATIONS";
 import SelectionInput from "../../components/SelectionInput";
 import "./checkIn.css";
+import { firestore } from "../../firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 function CheckInScreen() {
   const LOCATION_LABEL = "Where are you?";
@@ -16,9 +18,13 @@ function CheckInScreen() {
   const [seating, setSeating] = useState(null);
   const [line, setLine] = useState(null);
 
-  const handleSubmit = (e) => {
-    alert("Check-In submitted");
-    console.log(location, seating, line);
+  const handleSubmit = async (e) => {
+    await addDoc(collection(firestore, "checkin"), {
+      location: location,
+      seating: seating,
+      line: line,
+      timestap: serverTimestamp(),
+    });
     e.preventDefault();
   };
 
