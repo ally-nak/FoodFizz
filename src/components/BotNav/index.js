@@ -3,7 +3,8 @@ import { NavLink } from "react-router-dom";
 import HomeIcon from "./home.svg";
 import PostIcon from "./post.svg";
 import SearchIcon from "./search.svg";
-import checkin from "./checkin.svg";
+import checkIn from "./checkIn.svg";
+import checkInSummary from "./checkInSummary.svg";
 
 function BotNav() {
   return (
@@ -16,7 +17,10 @@ function BotNav() {
           <img src={PostIcon} alt="Post Icon" />
         </NavLink>
         <NavLink to="/check-in">
-          <img src={checkin} alt="Check In" style={{width:'27px', height:'27px'}}/>
+          <img src={checkIn} alt="Check In" style={{width:'27px', height:'27px'}}/>
+        </NavLink>
+        <NavLink to="/check-in-summary">
+          <img src={checkInSummary} alt="Check In Summary" style={{width:'27px', height:'27px'}}/>
         </NavLink>
       </div>
     </div>
