@@ -24,8 +24,15 @@ function FeedScreen() {
     <React.Fragment>
       <TopNav />
       <div className="container">
-        {posts.map((data) => (
-          <Post />
+        {posts.map((data, idx) => (
+          <Post 
+            key = {idx}
+            caption = {data.caption}
+            location = {data.location}
+            photoLink = {data.photo}
+            rating = {data.rating}
+            timestamp = {data.timestamp}
+          />
         ))}
       </div>
       <BotNav />
