@@ -1,0 +1,45 @@
+.check-in-summary-wrapper {
+  display: grid;
+  background-color: white;
+  color: #c41200;
+  font-weight: bold;
+  height: 100%;
+}
+.check-in-summary-form {
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f7f0f5;
+  height: 50vh;
+  width: 85vw;
+  padding: 25px;
+  align-items: center;
+  border-radius: 35px;
+}
+.check-in-summary-title {
+  font-size: x-large;
+  display: block;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+}
+.check-in-summary-header {
+  padding: 25px;
+  font-size: large;
+}
+.check-in-summary-info {
+  background-color: #f5f5f5;
+  color: black;
+  border-radius: 20px;
+  text-align: center;
+  padding: 8px 15px 8px 15px;
+  margin: 3px;
+  font-weight: 500;
+  width: 30%;
+  margin: 0 auto;
+}
+.question-wrapper {
+  padding-left: 25px;
+}
