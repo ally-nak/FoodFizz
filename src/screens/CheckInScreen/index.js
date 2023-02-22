@@ -23,7 +23,7 @@ function CheckInScreen() {
       location: location,
       seating: seating,
       line: line,
-      timestap: serverTimestamp(),
+      timestamp: serverTimestamp(),
     });
     e.preventDefault();
   };

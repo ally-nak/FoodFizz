@@ -1,6 +1,6 @@
 .question-wrapper {
   display: flex;
-  width: 100%;
+  width: 90%;
   flex-direction: column;
 }
 .question-label {
@@ -15,7 +15,7 @@
   color: black;
   border-radius: 20px;
   text-align: center;
-  padding: 8px 15px 8px 15px;
+  padding: 8px 15px;
   margin: 3px;
   font-weight: 500;
 }

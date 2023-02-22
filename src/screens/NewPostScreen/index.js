@@ -7,10 +7,9 @@ import PhotoArrow from "./photo_arrow.svg";
 import RedTree from "./red_tree.svg";
 import WhiteTree from "./white_tree.svg";
 import { NavLink } from "react-router-dom";
-import { firestore } from "../../firebase";
-import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+import { firestore, storage } from "../../firebase";
+import { collection, doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { storage } from "../../firebase";
 
 function NewPostScreen() {
   const PHOTO_LABEL = "UPLOAD A PHOTO";
@@ -89,6 +88,7 @@ function NewPostScreen() {
         allergy: related,
         likes: 0,
         rating: rating,
+        timestamp: serverTimestamp(),
       });
     }
   };
