@@ -52,10 +52,38 @@
   justify-self: center;
   width: 100%;
 }
+/*Need to move up likes higher*/
+.like-count {
+  font-size: 18px;
+}
+
+.downvote {
+  width: 25px;
+  height: 18px;
+  stroke: black;
+  stroke-width: 3px;
+}
+
+.downvote:hover {
+  stroke:red;
+}
+
+.upvote {
+  width: 25px;
+  height: 18px;
+  stroke: black;
+  stroke-width: 3px;
+}
+
+.upvote:hover {
+  stroke:green;
+}
 
 .post-footer {
   display: flex;
+  color: black;
   justify-content: space-between;
   margin-bottom: 1rem;
   padding-right: 5px;
 }
+

@@ -4,7 +4,11 @@ import ThumbsUp from "./thumb_up.svg";
 import ThumbsDown from "./thumb_down.svg";
 import Pin from "./pin.svg";
 import Flag from "./Flag.svg";
-import Favorite from "./Favorite.svg";
+import {ReactComponent as Upvote} from "./upvote.svg";
+import {ReactComponent as Downvote} from "./downvote.svg";
+
+import { firestore } from "../../firebase";
+import { doc, updateDoc } from "firebase/firestore";
 
 function Post(props) {
   function timeStamp(props) {
@@ -15,8 +19,26 @@ function Post(props) {
     if (hours > 11) {
       ap = "PM";
     }
-    const timestamp = hours + ":" + minutes + " " + ap;
+    var hourZero = "";
+    var minuteZero = "";
+    if (hours < 10) {
+      hourZero = "0"
+    }
+    if (minutes < 10) {
+      minuteZero = '0';
+    }
+    const timestamp = hourZero + hours + ":" + minuteZero + minutes + " " + ap;
     return timestamp;
+  }
+  const updateVote = voteType => async (e) => {
+    const likesRef = doc(firestore, "feed", props.docID);
+    var increment = 1;
+    if (voteType === "down") {
+      increment = -1;
+    }
+    await updateDoc(likesRef, {
+      likes: props.likes + increment
+    });
   }
 
   return (
@@ -43,7 +65,11 @@ function Post(props) {
       </div>
       <div className="post-footer">
         <img src={Flag} style={{ height: 25, width: 30 }} alt="Flag" />
-        <img src={Favorite} style={{ height: 25, width: 30 }} alt="Favorite" />
+        <div>
+            <Downvote className="downvote" alt="Downvote" onClick={updateVote("down")}/>
+          <span className="like-count"> {props.likes} </span>
+            <Upvote className="upvote" alt="Upvote" onClick={updateVote("up")} />
+        </div>
       </div>
     </div>
   );

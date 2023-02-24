@@ -1,0 +1,33 @@
+.button-style {
+    background-color: transparent;
+    border-color: transparent;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 8px;
+}
+.white-text {
+    color: white;
+    font-size: larger;
+}
+.my-popup-content {
+    width: 90%;
+    background: transparent;
+    border: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.my-popup-arrow {
+    color: rgb(255, 255, 255);
+}
+[role='tooltip'].my-popup-content {
+    width: 200px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+}
+.my-popup-overlay {
+    background: rgba(0, 0, 0, 0.5);
+}
+[data-popup='tooltip'].my-popup-overlay {
+    background: transparent;
+}
