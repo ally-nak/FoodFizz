@@ -8,17 +8,22 @@ import { firestore } from "../../firebase";
 import { getDocs, collection } from "firebase/firestore";
 
 function FeedScreen() {
+
   const [posts, setPosts] = useState([]);
   async function retrievePosts() {
     const querySnapshot = await getDocs(collection(firestore, "feed"));
     let fireBaseResponse = [];
-    querySnapshot.forEach((doc) => fireBaseResponse.push(doc.data()));
+    querySnapshot.forEach((doc) => {
+      var postInfo = doc.data()
+      postInfo["docID"] = doc.id;
+      fireBaseResponse.push(postInfo); 
+    });
     setPosts(fireBaseResponse)
   }
 
   useEffect(() => {
     retrievePosts();
-  }, []);
+  }, [posts]);
 
   return (
     <React.Fragment>
@@ -32,6 +37,8 @@ function FeedScreen() {
             photoLink = {data.photo}
             rating = {data.rating}
             timestamp = {data.timestamp}
+            likes = {data.likes}
+            docID = {data.docID}
           />
         ))}
       </div>

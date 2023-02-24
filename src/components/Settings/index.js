@@ -3,12 +3,14 @@ import React, { useState } from "react";
 import Popup from 'reactjs-popup';
 import LOCATIONS from "../../LOCATIONS";
 import SelectionInput from "../../components/SelectionInput";
-import FilterIcon from "./filter_icon.svg";
+import SettingsIcon from "./three_bar.svg";
 import 'reactjs-popup/dist/index.css';
-import './Filter.css';
+import './Settings.css';
 import "../../screens/CheckInScreen/checkIn.css";
 
-function PopupFilter() {
+/* TODO: Change this to account settings popup, including: login/logout, change username? */
+
+function SettingsPopup() {
   const LOCATION_LABEL = "Where do you usually eat?";
   const DIETARY_LABEL = "Any dietary restrictions?";
   const DIETARY_OPTIONS = ["Vegetarian", "Vegan", "Gluten-Free"];
@@ -16,9 +18,9 @@ function PopupFilter() {
   const [dietary, setDietary] = useState([]);
 
   const handleSubmit = (e) => {
-    /* TODO: Save user preferences to firebase */
     alert("Preferences filter submitted");
     e.preventDefault();
+
   };
 
   const handleLocation = (option) => {
@@ -45,14 +47,14 @@ function PopupFilter() {
 
  return (
     <Popup className="my-popup"
-        trigger={<button className='button-style'> <img src={FilterIcon} alt="Filter"/><span className="white-text">Filter</span></button>}
+        trigger={<button className='button-style'> <img src={SettingsIcon} alt="Settings"/></button>}
             modal>
             {
             close => (
                 <React.Fragment>
                     <div className="check-in-wrapper" style={{backgroundColor: 'transparent'}}>
                         <div className="check-in-form">
-                        <span className="check-in-title">PREFERENCES</span>
+                        <span className="check-in-title">SETTINGS</span>
                         <SelectionInput
                             multiselect
                             label={LOCATION_LABEL}
@@ -79,4 +81,4 @@ function PopupFilter() {
   );
 }
 
-export default PopupFilter;
+export default SettingsPopup;

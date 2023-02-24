@@ -4,17 +4,14 @@ import TopIcon from "./top.svg";
 import NewIcon from "./new.svg";
 import RankedIcon from "./ranked.svg";
 import PopupFilter from "../Filter/index.js";
-import ThreeBarIcon from "../Filter/three_bar.svg";
+import Settings from "../Settings/index.js";
 
-function TopNav() {
+function TopNav(props) {
   return (
     <div className="TopNav">
       <div className="logoWrapper">
         <span className="logo">STANFORD GRUB</span>
-        {/* <NavLink className="buttonWrapper"> */}
-          {/* <PopupFilter /> */}
-          <img src={ThreeBarIcon} alt="ThreeBarIcon" />
-        {/* </NavLink> */}
+          <Settings />
       </div>
       <div className="buttonsWrapper">
         <NavLink className="buttonWrapper" to="/top">
