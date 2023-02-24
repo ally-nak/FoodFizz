@@ -79,12 +79,6 @@
   stroke:green;
 }
 
-.vote-buttons {
-  background-color: transparent;
-  border-color: transparent;
-  padding: 0;
-}
-
 .post-footer {
   display: flex;
   color: black;
