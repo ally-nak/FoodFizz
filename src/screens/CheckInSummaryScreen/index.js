@@ -37,7 +37,7 @@ function CheckInSummaryScreen() {
           {(() => {
             if (location) {
               return (
-                <div className="a">
+                <div>
                   <div className="check-in-summary-header">
                     {SEATING_LABEL}
                   </div>
