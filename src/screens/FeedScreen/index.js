@@ -17,12 +17,12 @@ function FeedScreen() {
       postInfo["docID"] = doc.id;
       fireBaseResponse.push(postInfo);
     });
-    setPosts((fireBaseResponse) => fireBaseResponse);
+    setPosts(fireBaseResponse);
   }
 
   useEffect(() => {
     retrievePosts();
-  }, [posts]);
+  }, []);
 
   return (
     <React.Fragment>
