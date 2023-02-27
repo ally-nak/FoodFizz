@@ -1,5 +1,5 @@
 import "./Post.css";
-import React from "react";
+import React, {useState} from "react";
 import ThumbsUp from "./thumb_up.svg";
 import ThumbsDown from "./thumb_down.svg";
 import Pin from "./pin.svg";
@@ -11,6 +11,7 @@ import { firestore } from "../../firebase";
 import { doc, updateDoc } from "firebase/firestore";
 
 function Post(props) {
+  const [likesCount, setLikesCount] = useState(props.likes);
   function timeStamp(props) {
     const date = new Date(props.timestamp.seconds * 1000);
     const hours = (date.getHours() + 24) % 12 || 12;
@@ -37,8 +38,9 @@ function Post(props) {
       increment = -1;
     }
     await updateDoc(likesRef, {
-      likes: props.likes + increment
+      likes: likesCount + increment
     });
+    setLikesCount(likesCount + increment);
   }
 
   return (
@@ -67,7 +69,7 @@ function Post(props) {
         <img src={Flag} style={{ height: 25, width: 30 }} alt="Flag" />
         <div>
             <Downvote className="downvote" alt="Downvote" onClick={updateVote("down")}/>
-          <span className="like-count"> {props.likes} </span>
+          <span className="like-count"> {likesCount} </span>
             <Upvote className="upvote" alt="Upvote" onClick={updateVote("up")} />
         </div>
       </div>
