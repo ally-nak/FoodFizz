@@ -23,7 +23,7 @@ function FeedScreen() {
 
   useEffect(() => {
     retrievePosts();
-  }, [posts]);
+  }, []);
 
   return (
     <React.Fragment>
