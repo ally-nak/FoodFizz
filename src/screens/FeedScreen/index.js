@@ -1,14 +1,16 @@
+
 import React, { useEffect, useState } from "react";
 import TopNav from "../../components/TopNav";
 import BotNav from "../../components/BotNav";
 import Post from "../../components/Post";
 import "./feed.css";
-
+import LOCATIONS from "../../LOCATIONS";
 import { firestore } from "../../firebase";
 import { getDocs, collection } from "firebase/firestore";
 
 function FeedScreen() {
   const [posts, setPosts] = useState([]);
+  const [locationPref, setLocationPref] = useState(LOCATIONS);
   async function retrievePosts() {
     const querySnapshot = await getDocs(collection(firestore, "feed"));
     let fireBaseResponse = [];
@@ -26,18 +28,20 @@ function FeedScreen() {
 
   return (
     <React.Fragment>
-      <TopNav />
+      <TopNav setLocation={setLocationPref}/>
       <div className="container">
-        {posts.map((data, idx) => (
-          <Post
-            key={idx}
-            caption={data.caption}
-            location={data.location}
-            photoLink={data.photo}
-            rating={data.rating}
-            timestamp={data.timestamp}
-            likes={data.likes}
-            docID={data.docID}
+        {posts.filter((data, idx) => 
+          locationPref.includes(data.location)
+        ).map((data, idx) => (
+          <Post 
+            key = {idx}
+            caption = {data.caption}
+            location = {data.location}
+            photoLink = {data.photo}
+            rating = {data.rating}
+            timestamp = {data.timestamp}
+            likes = {data.likes}
+            docID = {data.docID}
           />
         ))}
       </div>
