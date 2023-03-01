@@ -17,7 +17,7 @@ function Ranked() {
       postInfo["docID"] = doc.id;
       fireBaseResponse.push(postInfo);
     });
-    fireBaseResponse.sort((a, b) => a.rating - b.rating);
+    fireBaseResponse.sort((a, b) => a.rating > b.rating);
     setPosts(fireBaseResponse);
   }
 
