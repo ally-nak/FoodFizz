@@ -2,10 +2,7 @@ import "./BotNav.css";
 import { NavLink } from "react-router-dom";
 import HomeIcon from "./home.svg";
 import PostIcon from "./post.svg";
-<<<<<<< Updated upstream
 import SearchIcon from "./search.svg";
-=======
->>>>>>> Stashed changes
 import checkIn from "./checkin.svg";
 import checkInSummary from "./checkInSummary.svg";
 
