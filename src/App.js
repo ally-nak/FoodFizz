@@ -14,7 +14,6 @@ export default function App() {
         <Route path="post" element={<NewPostScreen />} />
         <Route path="check-in" element={<CheckInScreen />} />
         <Route path="check-in-summary" element={<CheckInSummaryScreen />} />
-        <Route path="/ranked" element={<Ranked />} />
       </Routes>
     </BrowserRouter>
   );
