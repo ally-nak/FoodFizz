@@ -26,7 +26,7 @@ function TopNav(props) {
           <img src={RankedIcon} alt="Ranked Icon" />
           <span className="buttonText">Ranked</span>
         </NavLink>
-        <PopupFilter />
+        <PopupFilter setLocation={props.setLocation}/>
       </div>
     </div>
   );

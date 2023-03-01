@@ -88,7 +88,9 @@ function NewPostScreen() {
         allergy: related,
         likes: 0,
         rating: rating,
-        timestamp: serverTimestamp(),
+        // timestamp: serverTimestamp(),
+        // TODO(jialin): Fix this serverTimestamp undefined
+        timestamp: new Date().getTime()
       });
     }
   };
