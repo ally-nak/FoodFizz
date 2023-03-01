@@ -7,7 +7,7 @@ import RankedIcon from "./ranked.svg";
 import PopupFilter from "../Filter/index.js";
 import Settings from "../Settings/index.js";
 
-function TopNav({ fetchPost, retrievePosts }) {
+function TopNav({ fetchPost, retrievePosts, setLocation }) {
   const [ranked, setRanked] = useState(false);
 
   return (
@@ -35,7 +35,7 @@ function TopNav({ fetchPost, retrievePosts }) {
           <img src={RankedIcon} alt="Ranked Icon" />
           <span className="buttonText">Ranked</span>
         </div>
-        <PopupFilter />
+        <PopupFilter setLocation={setLocation}/>
       </div>
     </div>
   );
