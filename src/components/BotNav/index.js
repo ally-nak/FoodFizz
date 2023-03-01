@@ -2,8 +2,7 @@ import "./BotNav.css";
 import { NavLink } from "react-router-dom";
 import HomeIcon from "./home.svg";
 import PostIcon from "./post.svg";
-import SearchIcon from "./search.svg";
-import checkIn from "./checkin.svg";
+import checkIn from "./checkIn.svg";
 import checkInSummary from "./checkInSummary.svg";
 
 function BotNav() {
