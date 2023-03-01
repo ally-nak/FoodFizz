@@ -24,6 +24,14 @@ const firebaseConfig = {
     signInWithRedirect(auth, provider);
   }
 
+  export const googleSignout = () => {
+    auth.signOut().then(function() {
+       console.log('Signout Succesfull')
+    }, function(error) {
+       console.log('Signout Failed')  
+    });
+ }
+
   export const getUserInfo = () => {
     console.log("ENTEREDD");
     getRedirectResult(auth)
@@ -32,10 +40,7 @@ const firebaseConfig = {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       console.log("results", result);
-      // The signed-in user info.
       const user = result.user;
-      // IdP data available using getAdditionalUserInfo(result)
-      // ...
     }).catch((error) => {
       // Handle Errors here.
       const errorCode = error.code;

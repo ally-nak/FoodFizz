@@ -7,18 +7,26 @@ import FilterIcon from "./filter_icon.svg";
 import 'reactjs-popup/dist/index.css';
 import './Filter.css';
 import "../../screens/CheckInScreen/checkIn.css";
+import { auth, firestore } from "../../firebase";
+import { doc, updateDoc } from "firebase/firestore";
 
-function PopupFilter() {
+function PopupFilter(props) {
   const LOCATION_LABEL = "Where do you usually eat?";
   const DIETARY_LABEL = "Any dietary restrictions?";
   const DIETARY_OPTIONS = ["Vegetarian", "Vegan", "Gluten-Free"];
   const [location, setLocation] = useState([]);
   const [dietary, setDietary] = useState([]);
 
-  const handleSubmit = (e) => {
-    /* TODO: Save user preferences to firebase */
-    alert("Preferences filter submitted");
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    /* SAVE USER PREFS TO FIREBASE */
+    const userRef = doc(firestore, "users", auth.currentUser.uid);
+    await updateDoc(userRef, {
+        locations: location,
+        dietary: dietary
+    });
+    props.setLocation(location);
+    alert("Preferences filter submitted");
   };
 
   const handleLocation = (option) => {

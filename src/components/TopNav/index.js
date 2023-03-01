@@ -4,14 +4,17 @@ import TopIcon from "./top.svg";
 import NewIcon from "./new.svg";
 import RankedIcon from "./ranked.svg";
 import PopupFilter from "../Filter/index.js";
-import Settings from "../Settings/index.js";
+// import Settings from "../Settings/index.js";
+import SettingsIcon from "../Settings/three_bar.svg";
 
 function TopNav(props) {
   return (
     <div className="TopNav">
       <div className="logoWrapper">
         <span className="logo">STANFORD GRUB</span>
-          <Settings />
+        <NavLink to="login">
+            <img src={SettingsIcon} alt="Settings Icon" />
+        </NavLink>
       </div>
       <div className="buttonsWrapper">
         <NavLink className="buttonWrapper" to="/top">
@@ -26,7 +29,7 @@ function TopNav(props) {
           <img src={RankedIcon} alt="Ranked Icon" />
           <span className="buttonText">Ranked</span>
         </NavLink>
-        <PopupFilter />
+        <PopupFilter setLocation={props.setLocation}/>
       </div>
     </div>
   );

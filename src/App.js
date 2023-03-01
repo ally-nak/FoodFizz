@@ -13,9 +13,9 @@ export default function App() {
       <Routes>
         <Route index element={<PrivateRoute><FeedScreen /></PrivateRoute>} />
         <Route path="login" element={<LoginScreen />} />
-        <Route path="post" element={<NewPostScreen />} />
-        <Route path="check-in" element={<CheckInScreen />} />
-        <Route path="check-in-summary" element={<CheckInSummaryScreen />} />
+        <Route path="post" element={<PrivateRoute><NewPostScreen /></PrivateRoute>} />
+        <Route path="check-in" element={<PrivateRoute><CheckInScreen /></PrivateRoute>} />
+        <Route path="check-in-summary" element={<PrivateRoute><CheckInSummaryScreen /></PrivateRoute>} />
       </Routes>
     </BrowserRouter>
   );

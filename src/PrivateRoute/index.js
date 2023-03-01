@@ -1,19 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 import { auth } from "../firebase";
 import FeedScreen from "../screens/FeedScreen";
 import LoginScreen from "../screens/LoginScreen";
 
 const PrivateRoute = ({ children }) => {
-    const result = auth.onAuthStateChanged(user => {
+    const [authUser, setAuthUser] = useState(null);
+    auth.onAuthStateChanged(user => {
             if(user) {
-                console.log("USER", user);
-                return <FeedScreen />;
-                // return children;
+                setAuthUser(user);
             } else {
-                return <LoginScreen />;
+                setAuthUser(null);
             }
     });
-    return result;
+    console.log("AUTH USER", authUser);
+    return authUser ? children : <LoginScreen />;
 }
 
 export default PrivateRoute;
