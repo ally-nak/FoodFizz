@@ -1,4 +1,6 @@
 .BotNav {
+  position: sticky;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   background-color: #c41200;
@@ -9,5 +11,6 @@
 .buttonsWrapper-botnav {
   display: flex;
   justify-content: space-evenly;
-  padding: 15px;
+  align-items: center;
+  padding: 10px 0px 5px 0px;
 }

@@ -14,8 +14,6 @@ function Post(props) {
   const [likesCount, setLikesCount] = useState(props.likes);
 
   function timeStamp(props) {
-    console.log(props.caption);
-    console.log(props.timestamp);
     const date = props.timestamp.toDate();
 
     let hours = date.getHours();
