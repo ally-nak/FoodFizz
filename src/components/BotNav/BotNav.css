@@ -1,4 +1,6 @@
 .BotNav {
+  position: sticky;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   background-color: #c41200;
