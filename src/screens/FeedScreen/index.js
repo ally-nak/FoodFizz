@@ -20,7 +20,6 @@ function FeedScreen() {
       postInfo["docID"] = doc.id;
       fireBaseResponse.push(postInfo);
     });
-    console.log("retrievePosts", fireBaseResponse);
     setPosts(fireBaseResponse);
   }
 
@@ -33,7 +32,6 @@ function FeedScreen() {
       fireBaseResponse.push(postInfo);
     });
     fireBaseResponse.sort((a, b) => b.likes - a.likes);
-    console.log("fetchRankedPosts", fireBaseResponse);
     setPosts(fireBaseResponse);
     setRanked(!ranked);
   }
