@@ -1,47 +1,43 @@
 import "./Post.css";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import ThumbsUp from "./thumb_up.svg";
 import ThumbsDown from "./thumb_down.svg";
 import Pin from "./pin.svg";
 import Flag from "./Flag.svg";
-import {ReactComponent as Upvote} from "./upvote.svg";
-import {ReactComponent as Downvote} from "./downvote.svg";
+import { ReactComponent as Upvote } from "./upvote.svg";
+import { ReactComponent as Downvote } from "./downvote.svg";
 
 import { firestore } from "../../firebase";
 import { doc, updateDoc } from "firebase/firestore";
 
 function Post(props) {
   const [likesCount, setLikesCount] = useState(props.likes);
+
   function timeStamp(props) {
-    const date = new Date(props.timestamp.seconds * 1000);
-    const hours = (date.getHours() + 24) % 12 || 12;
+    console.log(props.caption);
+    console.log(props.timestamp);
+    const date = props.timestamp.toDate();
+
+    let hours = date.getHours();
+    const ap = hours > 11 ? "PM" : "AM";
+    hours = hours % 12 || 12;
+    const hourZero = hours < 10 ? "0" : "";
+
     const minutes = date.getMinutes();
-    var ap = "AM";
-    if (hours > 11) {
-      ap = "PM";
-    }
-    var hourZero = "";
-    var minuteZero = "";
-    if (hours < 10) {
-      hourZero = "0"
-    }
-    if (minutes < 10) {
-      minuteZero = '0';
-    }
+    const minuteZero = minutes < 10 ? "0" : "";
+
     const timestamp = hourZero + hours + ":" + minuteZero + minutes + " " + ap;
     return timestamp;
   }
-  const updateVote = voteType => async (e) => {
+
+  const updateVote = (voteType) => async (e) => {
     const likesRef = doc(firestore, "feed", props.docID);
-    var increment = 1;
-    if (voteType === "down") {
-      increment = -1;
-    }
+    const increment = voteType === "up" ? 1 : -1;
     await updateDoc(likesRef, {
-      likes: likesCount + increment
+      likes: likesCount + increment,
     });
     setLikesCount(likesCount + increment);
-  }
+  };
 
   return (
     <div className="post-wrapper">
@@ -68,9 +64,13 @@ function Post(props) {
       <div className="post-footer">
         <img src={Flag} style={{ height: 25, width: 30 }} alt="Flag" />
         <div>
-            <Downvote className="downvote" alt="Downvote" onClick={updateVote("down")}/>
+          <Downvote
+            className="downvote"
+            alt="Downvote"
+            onClick={updateVote("down")}
+          />
           <span className="like-count"> {likesCount} </span>
-            <Upvote className="upvote" alt="Upvote" onClick={updateVote("up")} />
+          <Upvote className="upvote" alt="Upvote" onClick={updateVote("up")} />
         </div>
       </div>
     </div>

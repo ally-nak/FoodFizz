@@ -13,7 +13,7 @@ function Ranked() {
     const querySnapshot = await getDocs(collection(firestore, "feed"));
     let fireBaseResponse = [];
     querySnapshot.forEach((doc) => {
-      var postInfo = doc.data();
+      let postInfo = doc.data();
       postInfo["docID"] = doc.id;
       fireBaseResponse.push(postInfo);
     });

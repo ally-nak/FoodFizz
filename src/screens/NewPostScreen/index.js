@@ -8,7 +8,7 @@ import RedTree from "./red_tree.svg";
 import WhiteTree from "./white_tree.svg";
 import { NavLink } from "react-router-dom";
 import { firestore, storage } from "../../firebase";
-import { collection, doc, setDoc, serverTimestamp } from "firebase/firestore";
+import { collection, doc, setDoc, Timestamp } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 function NewPostScreen() {
@@ -59,8 +59,8 @@ function NewPostScreen() {
   };
 
   async function getImageURL(docRef) {
-    var photoPath = "images/" + docRef.id + "/" + photo.name;
-    var photoRef = ref(storage, photoPath);
+    let photoPath = "images/" + docRef.id + "/" + photo.name;
+    let photoRef = ref(storage, photoPath);
     uploadBytes(photoRef, photo).then(async (snapshot) => {
       getDownloadURL(snapshot.ref).then(async (url) => {
         await setDoc(docRef, {
@@ -70,6 +70,7 @@ function NewPostScreen() {
           allergy: related,
           likes: 0,
           rating: rating,
+          timestamp: Timestamp.now(),
         });
       });
     });
@@ -77,7 +78,7 @@ function NewPostScreen() {
 
   const handleSubmit = async () => {
     alert("Submitting post");
-    var docRef = doc(collection(firestore, "feed"));
+    let docRef = doc(collection(firestore, "feed"));
     if (photo) {
       getImageURL(docRef);
     } else {
@@ -88,9 +89,7 @@ function NewPostScreen() {
         allergy: related,
         likes: 0,
         rating: rating,
-        // timestamp: serverTimestamp(),
-        // TODO(jialin): Fix this serverTimestamp undefined
-        timestamp: new Date().getTime()
+        timestamp: Timestamp.now(),
       });
     }
   };
