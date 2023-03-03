@@ -59,8 +59,8 @@ function NewPostScreen() {
   };
 
   async function getImageURL(docRef) {
-    var photoPath = "images/" + docRef.id + "/" + photo.name;
-    var photoRef = ref(storage, photoPath);
+    let photoPath = "images/" + docRef.id + "/" + photo.name;
+    let photoRef = ref(storage, photoPath);
     uploadBytes(photoRef, photo).then(async (snapshot) => {
       getDownloadURL(snapshot.ref).then(async (url) => {
         await setDoc(docRef, {
@@ -77,7 +77,7 @@ function NewPostScreen() {
 
   const handleSubmit = async () => {
     alert("Submitting post");
-    var docRef = doc(collection(firestore, "feed"));
+    let docRef = doc(collection(firestore, "feed"));
     if (photo) {
       getImageURL(docRef);
     } else {
@@ -90,7 +90,7 @@ function NewPostScreen() {
         rating: rating,
         // timestamp: serverTimestamp(),
         // TODO(jialin): Fix this serverTimestamp undefined
-        timestamp: new Date().getTime()
+        timestamp: new Date().getTime(),
       });
     }
   };

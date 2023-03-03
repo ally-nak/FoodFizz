@@ -14,7 +14,7 @@ function FeedScreen() {
     const querySnapshot = await getDocs(collection(firestore, "feed"));
     let fireBaseResponse = [];
     querySnapshot.forEach((doc) => {
-      var postInfo = doc.data();
+      let postInfo = doc.data();
       postInfo["docID"] = doc.id;
       fireBaseResponse.push(postInfo);
     });
@@ -25,7 +25,7 @@ function FeedScreen() {
     const querySnapshot = await getDocs(collection(firestore, "feed"));
     let fireBaseResponse = [];
     querySnapshot.forEach((doc) => {
-      var postInfo = doc.data();
+      let postInfo = doc.data();
       postInfo["docID"] = doc.id;
       fireBaseResponse.push(postInfo);
     });
@@ -39,7 +39,11 @@ function FeedScreen() {
 
   return (
     <React.Fragment>
-      <TopNav fetchPost={fetchRankedPosts} retrievePosts={retrievePosts} setLocation={setLocationPref} />
+      <TopNav
+        fetchPost={fetchRankedPosts}
+        retrievePosts={retrievePosts}
+        setLocation={setLocationPref}
+      />
       <div className="container">
         {posts
           .filter((data, idx) => locationPref.includes(data.location))
