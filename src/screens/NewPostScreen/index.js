@@ -8,7 +8,7 @@ import RedTree from "./red_tree.svg";
 import WhiteTree from "./white_tree.svg";
 import { NavLink } from "react-router-dom";
 import { firestore, storage } from "../../firebase";
-import { collection, doc, setDoc, serverTimestamp } from "firebase/firestore";
+import { collection, doc, setDoc, Timestamp } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 function NewPostScreen() {
@@ -70,6 +70,7 @@ function NewPostScreen() {
           allergy: related,
           likes: 0,
           rating: rating,
+          timestamp: Timestamp.now(),
         });
       });
     });
@@ -88,9 +89,7 @@ function NewPostScreen() {
         allergy: related,
         likes: 0,
         rating: rating,
-        // timestamp: serverTimestamp(),
-        // TODO(jialin): Fix this serverTimestamp undefined
-        timestamp: new Date().getTime(),
+        timestamp: Timestamp.now(),
       });
     }
   };
