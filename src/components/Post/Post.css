@@ -55,6 +55,7 @@
 /*Need to move up likes higher*/
 .like-count {
   font-size: 18px;
+  padding: 0px 10px;
 }
 
 .downvote {
@@ -82,7 +83,7 @@
 .post-footer {
   display: flex;
   color: black;
-  justify-content: space-between;
+  justify-content: right;
   margin-bottom: 1rem;
   padding-right: 5px;
 }

@@ -10,11 +10,13 @@ import { getDocs, collection } from "firebase/firestore";
 function FeedScreen() {
   const [posts, setPosts] = useState([]);
   const [locationPref, setLocationPref] = useState(LOCATIONS);
+  const [ranked, setRanked] = useState(false);
+
   async function retrievePosts() {
     const querySnapshot = await getDocs(collection(firestore, "feed"));
     let fireBaseResponse = [];
     querySnapshot.forEach((doc) => {
-      let postInfo = doc.data();
+      var postInfo = doc.data();
       postInfo["docID"] = doc.id;
       fireBaseResponse.push(postInfo);
     });
@@ -25,12 +27,13 @@ function FeedScreen() {
     const querySnapshot = await getDocs(collection(firestore, "feed"));
     let fireBaseResponse = [];
     querySnapshot.forEach((doc) => {
-      let postInfo = doc.data();
+      var postInfo = doc.data();
       postInfo["docID"] = doc.id;
       fireBaseResponse.push(postInfo);
     });
-    fireBaseResponse.sort((a, b) => a.rating - b.rating);
+    fireBaseResponse.sort((a, b) => b.likes - a.likes);
     setPosts(fireBaseResponse);
+    setRanked(!ranked);
   }
 
   useEffect(() => {
@@ -57,6 +60,7 @@ function FeedScreen() {
               timestamp={data.timestamp}
               likes={data.likes}
               docID={data.docID}
+              ranked={ranked}
             />
           ))}
       </div>
