@@ -4,7 +4,6 @@ import FeedScreen from "./screens/FeedScreen";
 import NewPostScreen from "./screens/NewPostScreen";
 import CheckInScreen from "./screens/CheckInScreen";
 import CheckInSummaryScreen from "./screens/CheckInSummaryScreen";
-import Ranked from "./screens/Ranked"
 
 export default function App() {
   return (

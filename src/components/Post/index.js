@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import ThumbsUp from "./thumb_up.svg";
 import ThumbsDown from "./thumb_down.svg";
 import Pin from "./pin.svg";
-import Flag from "./Flag.svg";
 import { ReactComponent as Upvote } from "./upvote.svg";
 import { ReactComponent as Downvote } from "./downvote.svg";
 
@@ -14,8 +13,6 @@ function Post(props) {
   const [likesCount, setLikesCount] = useState(props.likes);
 
   function timeStamp(props) {
-    console.log(props.caption);
-    console.log(props.timestamp);
     const date = props.timestamp.toDate();
 
     let hours = date.getHours();
@@ -62,16 +59,16 @@ function Post(props) {
         )}
       </div>
       <div className="post-footer">
-        <img src={Flag} style={{ height: 25, width: 30 }} alt="Flag" />
-        <div>
-          <Downvote
-            className="downvote"
-            alt="Downvote"
-            onClick={updateVote("down")}
-          />
-          <span className="like-count"> {likesCount} </span>
-          <Upvote className="upvote" alt="Upvote" onClick={updateVote("up")} />
-        </div>
+        <Downvote
+          className="downvote"
+          alt="Downvote"
+          onClick={updateVote("down")}
+        />
+        <span className="like-count">
+          {" "}
+          {props.ranked ?  props.likes : likesCount}{" "}
+        </span>
+        <Upvote className="upvote" alt="Upvote" onClick={updateVote("up")} />
       </div>
     </div>
   );
