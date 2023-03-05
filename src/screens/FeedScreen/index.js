@@ -11,6 +11,7 @@ function FeedScreen() {
   const [posts, setPosts] = useState([]);
   const [locationPref, setLocationPref] = useState(LOCATIONS);
   const [ranked, setRanked] = useState(false);
+  const [top, setTop] = useState(false);
 
   async function retrievePosts() {
     const querySnapshot = await getDocs(collection(firestore, "feed"));
@@ -31,9 +32,24 @@ function FeedScreen() {
       postInfo["docID"] = doc.id;
       fireBaseResponse.push(postInfo);
     });
-    fireBaseResponse.sort((a, b) => b.likes - a.likes);
+    fireBaseResponse.sort((a, b) => b.rating - a.rating);
     setPosts(fireBaseResponse);
     setRanked(!ranked);
+    setTop(top);
+  }
+
+  async function fetchTopPosts() {
+    const querySnapshot = await getDocs(collection(firestore, "feed"));
+    let fireBaseResponse = [];
+    querySnapshot.forEach((doc) => {
+      var postInfo = doc.data();
+      postInfo["docID"] = doc.id;
+      fireBaseResponse.push(postInfo);
+    });
+    fireBaseResponse.sort((a, b) => b.likes - a.likes);
+    setPosts(fireBaseResponse);
+    setTop(!top);
+    setRanked(ranked);
   }
 
   useEffect(() => {
@@ -43,7 +59,8 @@ function FeedScreen() {
   return (
     <React.Fragment>
       <TopNav
-        fetchPost={fetchRankedPosts}
+        fetchRankedPost={fetchRankedPosts}
+        fetchTopPosts={fetchTopPosts}
         retrievePosts={retrievePosts}
         setLocation={setLocationPref}
       />
@@ -61,6 +78,7 @@ function FeedScreen() {
               likes={data.likes}
               docID={data.docID}
               ranked={ranked}
+              top={top}
             />
           ))}
       </div>

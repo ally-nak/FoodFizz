@@ -7,8 +7,9 @@ import RankedIcon from "./ranked.svg";
 import PopupFilter from "../Filter/index.js";
 import Settings from "../Settings/index.js";
 
-function TopNav({ fetchPost, retrievePosts, setLocation }) {
+function TopNav({ fetchRankedPost, fetchTopPosts, retrievePosts, setLocation }) {
   const [ranked, setRanked] = useState(false);
+  const [top, setTop] = useState(false);
 
   return (
     <div className="TopNav">
@@ -17,25 +18,33 @@ function TopNav({ fetchPost, retrievePosts, setLocation }) {
         <Settings />
       </div>
       <div className="buttonsWrapper">
-        <NavLink className="buttonWrapper" to="/top">
+        <div
+          onClick={() => {
+            top ? retrievePosts() : fetchTopPosts();
+            setTop(!top);
+            setRanked(false);
+          }}
+          className={top ? "buttonWrapper-clicked" : "buttonWrapper"}
+        >
           <img src={TopIcon} alt="Top Icon" />
           <span className="buttonText">Top</span>
-        </NavLink>
+        </div>
         <NavLink className="buttonWrapper" to="/new">
           <img src={NewIcon} alt="New Icon" />
           <span className="buttonText">New</span>
         </NavLink>
         <div
           onClick={() => {
-            ranked ? retrievePosts() : fetchPost();
+            ranked ? retrievePosts() : fetchRankedPost();
             setRanked(!ranked);
+            setTop(false);
           }}
           className={ranked ? "buttonWrapper-clicked" : "buttonWrapper"}
         >
           <img src={RankedIcon} alt="Ranked Icon" />
           <span className="buttonText">Ranked</span>
         </div>
-        <PopupFilter setLocation={setLocation}/>
+        <PopupFilter setLocation={setLocation} />
       </div>
     </div>
   );

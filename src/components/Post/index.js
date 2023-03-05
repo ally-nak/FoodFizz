@@ -66,7 +66,7 @@ function Post(props) {
         />
         <span className="like-count">
           {" "}
-          {props.ranked ?  props.likes : likesCount}{" "}
+          {props.ranked || props.top ?  props.likes : likesCount}{" "}
         </span>
         <Upvote className="upvote" alt="Upvote" onClick={updateVote("up")} />
       </div>
