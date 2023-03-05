@@ -1,7 +1,7 @@
 .new-post-wrapper {
   display: flex;
   flex-direction: column;
-  height: 85vh;
+  flex-grow: 1;
   background-color: white;
   color: #c41200;
   font-weight: bold;
