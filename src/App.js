@@ -9,7 +9,6 @@ import Login from "./screens/Login";
 import { auth } from "./firebase";
 
 function onAuthStateChange(setUserAuth) {
-  console.log("ENTERED AUTH CHANGE");
   return auth.onAuthStateChanged(user => {
     let val = null;
     if (user) {
@@ -25,7 +24,6 @@ export default function App() {
   const [authUser, setAuthUser] = useState(null);
 
   useEffect(() => {
-    console.log("ENTERED USE EFFECT");
     const loggedIn = onAuthStateChange(setAuthUser);
     return () => {
       loggedIn();
