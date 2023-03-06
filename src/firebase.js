@@ -33,13 +33,11 @@ const firebaseConfig = {
  }
 
   export const getUserInfo = () => {
-    console.log("ENTEREDD");
     getRedirectResult(auth)
     .then((result) => {
       // This gives you a Google Access Token. You can use it to access Google APIs.
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
-      console.log("results", result);
       const user = result.user;
     }).catch((error) => {
       // Handle Errors here.
