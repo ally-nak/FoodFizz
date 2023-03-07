@@ -58,40 +58,25 @@ function NewPostScreen() {
     setPhoto(uploadedPhoto);
   };
 
-  async function getImageURL(docRef) {
-    let photoPath = "images/" + docRef.id + "/" + photo.name;
-    let photoRef = ref(storage, photoPath);
-    uploadBytes(photoRef, photo).then(async (snapshot) => {
-      getDownloadURL(snapshot.ref).then(async (url) => {
-        await setDoc(docRef, {
-          photo: url,
-          caption: text,
-          location: location,
-          allergy: related,
-          likes: 0,
-          rating: rating,
-          timestamp: Timestamp.now(),
-        });
-      });
-    });
-  }
-
   const handleSubmit = async () => {
-    alert("Submitting post");
-    let docRef = doc(collection(firestore, "feed"));
+    const docRef = doc(collection(firestore, "feed"));
+    let url = "";
     if (photo) {
-      getImageURL(docRef);
-    } else {
-      await setDoc(docRef, {
-        photo: "",
-        caption: text,
-        location: location,
-        allergy: related,
-        likes: 0,
-        rating: rating,
-        timestamp: Timestamp.now(),
-      });
+      const photoPath = "images/" + docRef.id + "/" + photo.name;
+      const photoRef = ref(storage, photoPath);
+      const snapshot = await uploadBytes(photoRef, photo);
+      url = await getDownloadURL(snapshot.ref);
     }
+    await setDoc(docRef, {
+      photo: url,
+      caption: text,
+      location: location,
+      allergy: related,
+      likes: 0,
+      rating: rating,
+      timestamp: Timestamp.now(),
+    });
+    alert("Post submitted!");
   };
 
   return (
