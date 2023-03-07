@@ -1,33 +1,33 @@
-.button-style {
-    background-color: transparent;
-    border-color: transparent;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 8px;
+.settings-check-in-wrapper {
+  display: grid;
+  background-color: white;
+  color: #c41200;
+  font-weight: bold;
+  height: 100%;
 }
-.white-text {
-    color: white;
-    font-size: larger;
+.settings-wrapper {
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f7f0f5;
+  height: 10vh;
+  width: 85vw;
+  padding: 25px 10px;
+  align-items: center;
+  border-radius: 35px;
 }
-.my-popup-content {
-    width: 90%;
-    background: transparent;
-    border: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.settings-check-in-title {
+  font-size: x-large;
 }
-.my-popup-arrow {
-    color: rgb(255, 255, 255);
+.settings-submit {
+  color: white;
+  background-color: #c41200;
+  border-radius: 30px;
+  padding: 10px 25px;
 }
-[role='tooltip'].my-popup-content {
-    width: 200px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
-}
-.my-popup-overlay {
-    background: rgba(0, 0, 0, 0.5);
-}
-[data-popup='tooltip'].my-popup-overlay {
-    background: transparent;
+.settings-selection {
+  color: #5c5552;
+  background-color: #f5f5f5;
 }
