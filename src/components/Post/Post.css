@@ -83,8 +83,10 @@
 .post-footer {
   display: flex;
   color: black;
-  justify-content: right;
-  margin-bottom: 1rem;
+  justify-content: space-between;
+  margin: 5px 0px;
   padding-right: 5px;
 }
 
+.post-tree {
+}

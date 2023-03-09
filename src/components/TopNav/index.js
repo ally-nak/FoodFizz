@@ -2,7 +2,6 @@ import "./TopNav.css";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import TopIcon from "./top.svg";
-import NewIcon from "./new.svg";
 import RankedIcon from "./ranked.svg";
 import PopupFilter from "../Filter/index.js";
 import Settings from "../Settings/index.js";
@@ -29,10 +28,6 @@ function TopNav({ fetchRankedPost, fetchTopPosts, retrievePosts, setLocation }) 
           <img src={TopIcon} alt="Top Icon" />
           <span className="buttonText">Top</span>
         </div>
-        <NavLink className="buttonWrapper" to="/new">
-          <img src={NewIcon} alt="New Icon" />
-          <span className="buttonText">New</span>
-        </NavLink>
         <div
           onClick={() => {
             ranked ? retrievePosts() : fetchRankedPost();
