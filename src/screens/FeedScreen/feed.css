@@ -2,4 +2,12 @@
   overflow: auto;
   background-color: white;
   flex-grow: 1;
+  display: flex;
+}
+.no-results-message {
+  text-align: center;
+  font-weight: bolder;
+  font-size: larger;
+  margin: auto;
+  color: grey;
 }

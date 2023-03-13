@@ -12,6 +12,7 @@ function FeedScreen() {
   const [locationPref, setLocationPref] = useState(LOCATIONS);
   const [ranked, setRanked] = useState(false);
   const [top, setTop] = useState(false);
+  const currentLocations = new Set();
 
   async function retrievePosts() {
     const querySnapshot = await getDocs(collection(firestore, "feed"));
@@ -20,6 +21,7 @@ function FeedScreen() {
       var postInfo = doc.data();
       postInfo["docID"] = doc.id;
       fireBaseResponse.push(postInfo);
+      currentLocations.add(postInfo.location);
     });
     setPosts(fireBaseResponse);
   }
@@ -55,6 +57,26 @@ function FeedScreen() {
   useEffect(() => {
     retrievePosts();
   }, []);
+
+  const filteredLocations = locationPref.filter(value => currentLocations.has(value));
+  if (!filteredLocations.length) {
+    return (
+      <React.Fragment>
+        <TopNav
+          fetchRankedPost={fetchRankedPosts}
+          fetchTopPosts={fetchTopPosts}
+          retrievePosts={retrievePosts}
+          setLocation={setLocationPref}
+        />
+        <div className="container">
+          <div className="no-results-message">
+          Sorry, no posts have been added for those locations yet!
+          </div>
+        </div>
+        <BotNav />
+      </React.Fragment>
+    );
+  }
 
   return (
     <React.Fragment>
