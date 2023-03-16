@@ -1,11 +1,9 @@
 import "./Post.css";
 import React, { useState } from "react";
-import ThumbsUp from "./thumb_up.svg";
-import ThumbsDown from "./thumb_down.svg";
 import Pin from "./pin.svg";
 import { ReactComponent as Upvote } from "./upvote.svg";
 import { ReactComponent as Downvote } from "./downvote.svg";
-
+import { BsTreeFill } from "react-icons/bs";
 import { firestore } from "../../firebase";
 import { doc, updateDoc } from "firebase/firestore";
 
@@ -45,11 +43,6 @@ function Post(props) {
         </div>
         <div className="time-wrapper">
           <span className="post-time">{timeStamp(props)}</span>
-          {props.rating > 2.5 ? (
-            <img src={ThumbsUp} alt="thumbs up" />
-          ) : (
-            <img src={ThumbsDown} alt="thumbs down" />
-          )}
         </div>
       </div>
       <div className="post-content">
@@ -59,16 +52,23 @@ function Post(props) {
         )}
       </div>
       <div className="post-footer">
-        <Downvote
-          className="downvote"
-          alt="Downvote"
-          onClick={updateVote("down")}
-        />
-        <span className="like-count">
-          {" "}
-          {props.ranked || props.top ?  props.likes : likesCount}{" "}
-        </span>
-        <Upvote className="upvote" alt="Upvote" onClick={updateVote("up")} />
+        <div className="post-rating">
+          {new Array(props.rating).fill(null).map(() => (
+            <BsTreeFill size={20} color={"#c41200"} />
+          ))}
+        </div>
+        <div>
+          <Downvote
+            className="downvote"
+            alt="Downvote"
+            onClick={updateVote("down")}
+          />
+          <span className="like-count">
+            {" "}
+            {props.ranked || props.top ? props.likes : likesCount}{" "}
+          </span>
+          <Upvote className="upvote" alt="Upvote" onClick={updateVote("up")} />
+        </div>
       </div>
     </div>
   );
