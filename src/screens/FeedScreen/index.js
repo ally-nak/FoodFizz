@@ -12,7 +12,7 @@ function FeedScreen() {
   const [locationPref, setLocationPref] = useState(LOCATIONS);
   const [ranked, setRanked] = useState(false);
   const [top, setTop] = useState(false);
-  const currentLocations = new Set();
+  const [currentLocations, setCurrentLocations] = useState(new Set());
 
   async function retrievePosts() {
     const querySnapshot = await getDocs(collection(firestore, "feed"));
@@ -21,8 +21,9 @@ function FeedScreen() {
       var postInfo = doc.data();
       postInfo["docID"] = doc.id;
       fireBaseResponse.push(postInfo);
-      currentLocations.add(postInfo.location);
+      setCurrentLocations(currentLocations.add(postInfo.location));
     });
+
     setPosts(fireBaseResponse);
   }
 
@@ -58,8 +59,9 @@ function FeedScreen() {
     retrievePosts();
   }, []);
 
+
   const filteredLocations = locationPref.filter(value => currentLocations.has(value));
-  if (!filteredLocations.length) {
+  if (!filteredLocations.length && currentLocations.size > 0) {
     return (
       <React.Fragment>
         <TopNav
